@@ -41,7 +41,19 @@ public class MyHashMap<K, V> extends MyBetterMap<K, V> implements Map<K, V> {
 	 */
 	protected void rehash() {
         // TODO: fill this in.
-        throw new UnsupportedOperationException();
+		int size = maps.size();
+		//System.out.println("Size !!!! " + size);
+		//System.out.println("After make map ! " + maps.size());
+		for(MyLinearMap<K,V> currentMap : maps) {
+			List<Entry> entries = (List)currentMap.getEntries();
+			//System.out.println("List size : " + entries.size());
+			for(Entry cur : entries) {
+				//System.out.println("Current Entry Key : " + cur.getKey() + " Current Key value : " + cur.getValue());
+				super.put((K)cur.getKey(), (V)cur.getValue());
+			}
+		}
+
+
 	}
 
 	/**
